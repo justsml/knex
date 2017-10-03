@@ -206,6 +206,9 @@ TableBuilder.prototype.foreign = function(column, keyName) {
             if (typeof tableName !== 'string') {
               throw new TypeError(`Expected tableName to be a string, got: ${typeof tableName}`);
             }
+            if (tableName.indexOf('-') > -1) {
+              throw new TypeError(`Expected tableName to contain valid chars, got: ${typeof tableName}`);
+            }
             foreignData.inTable = tableName;
             return returnObj;
           },
